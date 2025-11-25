@@ -4,10 +4,10 @@ namespace ValeanDariaLab7;
 
 public partial class ListPage : ContentPage
 {
-	public ListPage()
-	{
-		InitializeComponent();
-	}
+    public ListPage()
+    {
+        InitializeComponent();
+    }
 
     async void OnSaveButtonClicked(object sender, EventArgs e)
     {
@@ -16,6 +16,7 @@ public partial class ListPage : ContentPage
         await App.Database.SaveShopListAsync(slist);
         await Navigation.PopAsync();
     }
+
     async void OnDeleteButtonClicked(object sender, EventArgs e)
     {
         var slist = (ShopList)BindingContext;
@@ -23,4 +24,41 @@ public partial class ListPage : ContentPage
         await Navigation.PopAsync();
     }
 
+    async void OnChooseButtonClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ProductPage((ShopList)this.BindingContext)
+        {
+            BindingContext = new Product()
+        });
+    }
+
+    async void OnDeleteItemClicked(object sender, EventArgs e)
+    {
+        var selectedProduct = listView.SelectedItem as Product;
+        if (selectedProduct != null)
+        {
+            var shopList = (ShopList)BindingContext;
+
+            var listProducts = await App.Database.GetListProductsAsync(shopList.ID);
+            var lp = listProducts.FirstOrDefault(p => p.ID == selectedProduct.ID);
+            if (lp != null)
+            {
+                await App.Database.DeleteListProductAsync(new ListProduct
+                {
+                    ShopListID = shopList.ID,
+                    ProductID = selectedProduct.ID,
+                    ID = lp.ID
+                });
+            }
+
+            listView.ItemsSource = await App.Database.GetListProductsAsync(shopList.ID);
+        }
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        var shopList = (ShopList)BindingContext;
+        listView.ItemsSource = await App.Database.GetListProductsAsync(shopList.ID);
+    }
 }
