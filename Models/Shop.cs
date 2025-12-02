@@ -12,15 +12,15 @@ namespace ValeanDariaLab7.Models
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public required string ShopName { get; set; }
-        public required string Adress { get; set; }
+        public  string ShopName { get; set; }
+        public  string Adress { get; set; }
         public string ShopDetails
         {
             get
             {
                 return ShopName + ""+Adress;} }
         [OneToMany]
-        public required List<ShopList> ShopLists { get; set; }
+        public  List<ShopList> ShopLists { get; set; }
 
     }
 }

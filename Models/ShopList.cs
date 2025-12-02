@@ -1,5 +1,6 @@
 ﻿using SQLite;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
+using SQLiteNetExtensions.Attributes;
 
 namespace ValeanDariaLab7.Models
 {
