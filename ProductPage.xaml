@@ -8,42 +8,33 @@
         <Editor Placeholder="Enter product name" Margin="20"
  Text="{Binding Description}"
  HeightRequest="50" />
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Text="Save Product" MaximumWidthRequest="200"
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save Product" MaximumWidthRequest="200"
                 Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
+                <Button Grid.Column="1"
                 Text="Delete Product" MaximumWidthRequest="200"
                 Clicked="OnDeleteButtonClicked"/>
-            <ListView Grid.Row="1" Grid.Column="0" x:Name="listView"
+                <ListView Grid.Row="1" Grid.Column="0" x:Name="listView"
  Margin="20" IsRefreshing="True" >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Text="{Binding Description}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button Grid.Row="2" Grid.Column="0" Text="Add to Shop List"
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="2" Grid.Column="0" Text="Add to Shop List"
 MaximumWidthRequest="200"
  Clicked="OnAddButtonClicked" />
-        </Grid>
-
-        <ListView x:Name="listView"
-        Margin="20">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell Detail="{Binding Description}" />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </Grid>
 
         </StackLayout>
     </ContentPage.Content>

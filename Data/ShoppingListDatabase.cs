@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ValeanDariaLab7.Models;
@@ -36,7 +37,7 @@ namespace ValeanDariaLab7.Data
             return _database.Table<Product>().ToListAsync();
         }
 
-        internal async Task GetListProductAsync(int iD)
+        internal async Task GetProductAsync(int iD)
         {
             throw new NotImplementedException();
         }
@@ -73,6 +74,11 @@ namespace ValeanDariaLab7.Data
         }
 
         internal async Task DeleteListProductAsync(ListProduct listProduct)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal async Task<IEnumerable> GetProductAsync()
         {
             throw new NotImplementedException();
         }
