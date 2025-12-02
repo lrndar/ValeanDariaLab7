@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using ValeanDariaLab7.Models;
@@ -89,6 +90,11 @@ namespace ValeanDariaLab7.Data
         }
 
         internal async Task DeleteListProductAsync(ListProduct listProduct)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal async Task<IEnumerable> GetShopListsAsync()
         {
             throw new NotImplementedException();
         }
